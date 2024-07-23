@@ -1,0 +1,87 @@
+{
+    "margin-top": 5,
+    "margin-left": 3,
+    "margin-right": 3,
+    "modules-left": ["clock", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["temperature", "cpu", "memory", "disk", "network","wireplumber"],
+
+	"hyprland/workspaces": {
+	"format": "{name}",
+	"persistent-workspaces": {
+	"1": [],
+	"2": [],
+	"3": []
+	}
+	},
+
+       "hyprland/window": {
+    	"format": "<span> </span>{}",
+	"max-length": 30,
+	"rewrite": {"<span> </span>": "<span> </span> Arch"}
+    },
+    "network": {
+        "format-ethernet": "{bandwidthTotalBytes} 󰊗",
+        "format-disconnected": "", 
+        "max-length": 50,
+        //"on-click": "kitty -e 'nmtui'"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+		"on-click": "bash /home/dg/.local/bin/toggleRemote"
+    },
+    "clock": {
+    "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "wireplumber": {
+        "format": "{volume}% {icon} ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "0% {icon} ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/scratchpad-indicator": {
+        "format-text": "{}hi",
+        "return-type": "json",
+        "interval": 3,
+        "exec": "~/.local/bin/scratchpad-indicator 2> /dev/null",
+        "exec-if": "exit 0",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
+    },
+     "temperature": {
+    //"thermal-zone": 2,
+     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    // "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+},
+    "cpu": {
+        "format": "<span>CPU</span> {usage}% "
+    },
+    "memory": {
+        "format": "<span>RAM</span> {}% "
+    },
+        "disk": {
+        "interval": 30,
+        "format": "<span>/</span> {percentage_used}% ",
+        "path": "/"
+    }
+}

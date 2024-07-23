@@ -1,0 +1,12 @@
+import = [
+    "~/.config/alacritty/themes/themes/nord.toml"
+]
+
+[window]
+padding = {x=3, y=8}
+opacity = 0.8
+blur = true
+
+[font]
+normal = {family = "Fira Code", style = "Regular"}
+size = 11
